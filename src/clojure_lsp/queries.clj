@@ -266,5 +266,5 @@
 (defn find-namespace-definition-by-namespace [analysis namespace]
   (find-last-order-by-project-analysis
     #(and (= (:bucket %) :namespace-definitions)
-          (= (:name %) (symbol namespace)))
+          (= (:name %) namespace))
     analysis))
