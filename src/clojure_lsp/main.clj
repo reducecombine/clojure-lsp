@@ -68,6 +68,7 @@
       SignatureHelpParams
       TextDocumentSyncKind
       TextDocumentSyncOptions
+      WorkspaceFolder
       WorkspaceSymbolParams)
     (org.eclipse.lsp4j.launch LSPLauncher)
     (org.eclipse.lsp4j.services LanguageServer TextDocumentService WorkspaceService LanguageClient))
@@ -295,7 +296,10 @@
              (end
                (do
                  (log/info "Initializing...")
-                 (handlers/initialize (.getRootUri params)
+                 (handlers/initialize (-> params
+                                          .getWorkspaceFolders
+                                          ^WorkspaceFolder (first)
+                                          .getUri)
                                       (client-capabilities params)
                                       (client-settings params))
                  (when-let [parent-process-id (.getProcessId params)]
