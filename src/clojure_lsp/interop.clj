@@ -347,8 +347,8 @@
 
 (s/def ::semantic-tokens (s/and (s/keys :req-un [::data]
                                   :opt-un [::result-id])
-                                (s/conformer #(doto (SemanticTokens. (:result-id %1)
-                                                                     (java.util.ArrayList. (:data %1)))))))
+                                (s/conformer #(SemanticTokens. (:result-id %1)
+                                                               (java.util.ArrayList. (:data %1))))))
 
 (s/def ::call-hierarchy-item (s/and (s/keys :req-un [::name :symbol/kind ::uri ::range ::selection-range]
                                             :opt-un [::tags ::detail ::data])

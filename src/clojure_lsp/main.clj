@@ -324,9 +324,9 @@
                                           (.setSemanticTokensProvider (when (or (not (contains? settings :semantic-tokens?))
                                                                                 (:semantic-tokens? settings))
                                                                         (doto (SemanticTokensWithRegistrationOptions.)
-                                                                          (.setLegend (doto (SemanticTokensLegend.
+                                                                          (.setLegend (SemanticTokensLegend.
                                                                                               semantic-tokens/token-types-str
-                                                                                              semantic-tokens/token-modifiers)))
+                                                                                       semantic-tokens/token-modifiers))
                                                                           (.setRange true)
                                                                           (.setFull true))))
                                           (.setExecuteCommandProvider (doto (ExecuteCommandOptions.)
