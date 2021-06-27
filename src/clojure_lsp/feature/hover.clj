@@ -3,8 +3,7 @@
     [clojure-lsp.db :as db]
     [clojure.string :as string]
     [clojure-lsp.queries :as q]
-    [clojure-lsp.shared :as shared]
-    [clojure-lsp.feature.hover :as f.hover]))
+    [clojure-lsp.shared :as shared]))
 
 (def line-break "\n----\n")
 (def opening-code "```clojure\n")
@@ -64,11 +63,11 @@
     (cond
       definition
       {:range (shared/->range element)
-       :contents (f.hover/hover-documentation definition)}
+       :contents (hover-documentation definition)}
 
       element
       {:range (shared/->range element)
-       :contents (f.hover/hover-documentation element)}
+       :contents (hover-documentation element)}
 
       :else
       {:contents []})))
